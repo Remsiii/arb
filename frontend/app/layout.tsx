@@ -1,13 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Inter as FontSans } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-
-export const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
 
 
 export const metadata: Metadata = {
@@ -24,16 +18,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
       </head>
-      <body className={fontSans.variable}>
-      <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
+      <body className="font-sans">
+
         {children}
-        </ThemeProvider>
 
       </body>
     </html>

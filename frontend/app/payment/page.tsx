@@ -1,139 +1,79 @@
-"use client"
-
-import { Icons } from "@/components/icons"
-import { Button } from "@/registry/new-york/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/registry/new-york/ui/card"
-import { Input } from "@/registry/new-york/ui/input"
-import { Label } from "@/registry/new-york/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/new-york/ui/select"
-
-export default function DemoPaymentMethod() {
+export default function Example() {
+  const stats = [
+    { id: 1, name: 'Transactions every 24 hours', value: '44 million' },
+    { id: 2, name: 'Assets under holding', value: '$119 trillion' },
+    { id: 3, name: 'New users annually', value: '46,000' },
+  ]
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Payment Method</CardTitle>
-        <CardDescription>
-          Add a new payment method to your account.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-6">
-        <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
-          <div>
-            <RadioGroupItem value="card" id="card" className="peer sr-only" />
-            <Label
-              htmlFor="card"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="mb-3 h-6 w-6"
+    <div className="bg-white">
+      <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+          <svg
+            viewBox="0 0 1024 1024"
+            className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+            aria-hidden="true"
+          >
+            <circle cx={512} cy={512} r={512} fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fillOpacity="0.7" />
+            <defs>
+              <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+                <stop stopColor="#7775D6" />
+                <stop offset={1} stopColor="#E935C1" />
+              </radialGradient>
+            </defs>
+          </svg>
+          <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Boost your productivity.
+              <br />
+              Start using our app today.
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+              <a
+                href="#"
+                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                <rect width="20" height="14" x="2" y="5" rx="2" />
-                <path d="M2 10h20" />
-              </svg>
-              Card
-            </Label>
+                Get started
+              </a>
+              <a href="#" className="text-sm font-semibold leading-6 text-white">
+                Learn more <span aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
-          <div>
-            <RadioGroupItem
-              value="paypal"
-              id="paypal"
-              className="peer sr-only"
+          <div className="relative mt-16 h-80 lg:mt-8">
+            <img
+              className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+              src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+              alt="App screenshot"
+              width={1824}
+              height={1080}
             />
-            <Label
-              htmlFor="paypal"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-            >
-              <Icons.paypal className="mb-3 h-6 w-6" />
-              Paypal
-            </Label>
-          </div>
-          <div>
-            <RadioGroupItem value="apple" id="apple" className="peer sr-only" />
-            <Label
-              htmlFor="apple"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-            >
-              <Icons.apple className="mb-3 h-6 w-6" />
-              Apple
-            </Label>
-          </div>
-        </RadioGroup>
-        <div className="grid gap-2">
-          <Label htmlFor="name">Name</Label>
-          <Input id="name" placeholder="First Last" />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="number">Card number</Label>
-          <Input id="number" placeholder="" />
-        </div>
-        <div className="grid grid-cols-3 gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="month">Expires</Label>
-            <Select>
-              <SelectTrigger id="month">
-                <SelectValue placeholder="Month" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="1">January</SelectItem>
-                <SelectItem value="2">February</SelectItem>
-                <SelectItem value="3">March</SelectItem>
-                <SelectItem value="4">April</SelectItem>
-                <SelectItem value="5">May</SelectItem>
-                <SelectItem value="6">June</SelectItem>
-                <SelectItem value="7">July</SelectItem>
-                <SelectItem value="8">August</SelectItem>
-                <SelectItem value="9">September</SelectItem>
-                <SelectItem value="10">October</SelectItem>
-                <SelectItem value="11">November</SelectItem>
-                <SelectItem value="12">December</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="year">Year</Label>
-            <Select>
-              <SelectTrigger id="year">
-                <SelectValue placeholder="Year" />
-              </SelectTrigger>
-              <SelectContent>
-                {Array.from({ length: 10 }, (_, i) => (
-                  <SelectItem key={i} value={`${new Date().getFullYear() + i}`}>
-                    {new Date().getFullYear() + i}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="cvc">CVC</Label>
-            <Input id="cvc" placeholder="CVC" />
           </div>
         </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Continue</Button>
-      </CardFooter>
-    </Card>
+      </div>
+
+    
+
+
+    <div className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+          {stats.map((stat) => (
+            <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base leading-7 text-gray-600">{stat.name}</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                {stat.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  
+
+
+    </div>
   )
 }
