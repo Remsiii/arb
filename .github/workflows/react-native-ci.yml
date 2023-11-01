@@ -1,0 +1,35 @@
+name: React Native CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install_and_build:
+    name: Install and Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+
+    - name: Install Dependencies
+      run: npm install
+      working-directory: frontend-native
+
+    - name: Build Expo Web
+      run: npm run web
+      working-directory: frontend-native
+
+    - name: Build Expo Android
+      run: npm run android
+      working-directory: frontend-native
+
+    - name: Build Expo iOS
+      run: npm run ios
+      working-directory: frontend-native
