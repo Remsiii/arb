@@ -1,15 +1,15 @@
 [
     {
       "type": "Vorspeise",
-      "title": "CALAMARI GANG",
+      "title": "Mancacasi Mami",
       "description": "Calamari prăjiți într-un mix de făină aromatizată cu fenicul și oregano, acompaniați de un sos ușor picant de maioneză și harissa. Totul este pus în valoare de un mix proaspăt de salată, cu dressing delicios de lămâie și miere.",
-      "price": "100"
+      "price": "10"
     },
     {
       "type": "Vorspeise",
-      "title": "CALAMARI GANG",
+      "title": "Lol Imagone",
       "description": "Calamari prăjiți într-un mix de făină aromatizată cu fenicul și oregano, acompaniați de un sos ușor picant de maioneză și harissa. Totul este pus în valoare de un mix proaspăt de salată, cu dressing delicios de lămâie și miere.",
-      "price": "100"
+      "price": "23,67"
     },
     {
       "type": "Vorspeise",
@@ -55,15 +55,15 @@
     },
     {
       "type": "Nachspeise",
-      "title": "CALAMARI GANG",
+      "title": "Laurentia Illioni",
       "description": "Calamari prăjiți într-un mix de făină aromatizată cu fenicul și oregano, acompaniați de un sos ușor picant de maioneză și harissa. Totul este pus în valoare de un mix proaspăt de salată, cu dressing delicios de lămâie și miere.",
-      "price": "100"
+      "price": "69,42"
     },
     {
       "type": "Getränke",
-      "title": "CALAMARI GANG",
+      "title": "Doamne Ajuta Getränk",
       "description": "Calamari prăjiți într-un mix de făină aromatizată cu fenicul și oregano, acompaniați de un sos ușor picant de maioneză și harissa. Totul este pus în valoare de un mix proaspăt de salată, cu dressing delicios de lămâie și miere.",
-      "price": "100"
+      "price": "30"
     }
   ]
   

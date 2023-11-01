@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
-const MenuCard = ({ title, description, price, setCartCount }) => {
+const MenuCard = ({ title, description, price, setCartCount, addToCart }) => {
     const handlePress = () => {
-        Alert.alert('Ausgewählt!', `${title} wurde zum Warenkorb hinzugefügt.`);
         setCartCount(prevCount => prevCount + 1);
+        addToCart({ title, description, price });
     };
 
     return (
@@ -15,7 +15,7 @@ const MenuCard = ({ title, description, price, setCartCount }) => {
                     <Text style={styles.description}>{description}</Text>
                 </View>
                 <View style={styles.rightContainer}>
-                    <Text style={styles.price}>{price} LEI</Text>
+                    <Text style={styles.price}>{price} €</Text>
                     <TouchableOpacity onPress={handlePress} style={styles.addButton}>
                         <Text style={styles.addButtonText}>+</Text>
                     </TouchableOpacity>
@@ -55,14 +55,14 @@ const styles = StyleSheet.create({
     },
     rightContainer: {
         flex: 1,
-        flexDirection: 'row',  // Setze den Preis und den Button nebeneinander
-        alignItems: 'center',   // Zentriere die Elemente vertikal
-        justifyContent: 'flex-end' // Stelle sicher, dass sie am rechten Rand ausgerichtet sind
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'flex-end'
     },
     price: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginRight: 10  // Füge einen kleinen Abstand zwischen dem Preis und dem Button hinzu
+        marginRight: 10  
     },
     addButton: {
         width: 30,

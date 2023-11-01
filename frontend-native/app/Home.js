@@ -12,6 +12,10 @@ const Home = ({ navigation }) => {
   const uniqueTypes = [...new Set(menuData.map(item => item.type))];
 
   const scrollViewRef = useRef(null);
+  
+  const openShoppingCart = () => {
+    navigation.navigate('ShoppingCart', { cartItems });
+  };
 
   const handleArrowClick = (direction) => {
     const currentIndex = uniqueTypes.indexOf(selectedType);
@@ -62,7 +66,7 @@ const Home = ({ navigation }) => {
           ))}
         </ScrollView>
         {cartCount > 0 && (
-          <TouchableOpacity style={styles.cartButton} onPress={() => navigation.navigate('Payment')}>
+          <TouchableOpacity style={styles.cartButton} onPress={openShoppingCart}>
             <Text style={styles.cartIcon}>🛒</Text>
             {cartCount > 0 && <Text style={styles.cartCount}>{cartCount}</Text>}
           </TouchableOpacity>
