@@ -1,0 +1,43 @@
+name: React Native CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_android:
+    name: Build for Android
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '20'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build Android APK
+      run: npx react-native run-android --variant=release
+
+  build_ios:
+    name: Build for iOS
+    runs-on: macos-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '20'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build iOS App
+      run: npx react-native run-ios --configuration Release
