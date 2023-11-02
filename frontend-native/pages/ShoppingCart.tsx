@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { View, Text, StyleSheet, Pressable, ActivityIndicator, ScrollView } from 'react-native';
 import ShoppingCartItem from '../components/ShoppingCartItems';
 
-const ShoppingCart = ({ route }) => {
+// Definieren Sie den Typ für die Artikel im Warenkorb
+interface CartItem {
+  title: string;
+  description: string;
+  price: number;
+  type: string;
+}
+
+// Definieren Sie den Typ für die Props der ShoppingCart-Komponente
+interface ShoppingCartProps {
+  route: {
+    params: {
+      cartItems: CartItem[];
+    };
+  };
+}
+
+const ShoppingCart: FC<ShoppingCartProps> = ({ route }) => {
   const { cartItems } = route.params;
 
   const onCheckout = async () => {

@@ -1,7 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const MenuCard = ({ title, description, price, setCartCount, addToCart }) => {
+interface MenuCardProps {
+  title: string;
+  description: string;
+  price: number;
+  setCartCount: (update: (prevCount: number) => number) => void;
+  addToCart: (item: { title: string; description: string; price: number }) => void;
+}
+
+const MenuCard: React.FC<MenuCardProps> = ({ title, description, price, setCartCount, addToCart }) => {
     const handlePress = () => {
         setCartCount(prevCount => prevCount + 1);
         addToCart({ title, description, price });
@@ -15,7 +23,7 @@ const MenuCard = ({ title, description, price, setCartCount, addToCart }) => {
                     <Text style={styles.description}>{description}</Text>
                 </View>
                 <View style={styles.rightContainer}>
-                    <Text style={styles.price}>{price} €</Text>
+                    <Text style={styles.price}>{price}€</Text>
                     <TouchableOpacity onPress={handlePress} style={styles.addButton}>
                         <Text style={styles.addButtonText}>+</Text>
                     </TouchableOpacity>

@@ -1,36 +1,49 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, FC } from 'react';
 import { ScrollView, SafeAreaView, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import MenuCard from '../components/RecipeCard';
-import menuData from './menuData.json';
+import menuData from '../app/menuData.json';
 import Arrows from '../components/Arrows';
 
-const Home = ({ navigation }) => {
-  const [selectedType, setSelectedType] = useState('Vorspeise');
-  const [cartItems, setCartItems] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
+interface CartItem {
+  title: string;
+  description: string;
+  price: number;
+  type: string;
+}
+
+interface HomeProps {
+  navigation: {
+    navigate: (route: string, params: { cartItems: CartItem[] }) => void;
+  };
+}
+
+const Home: FC<HomeProps> = ({ navigation }) => {
+  const [selectedType, setSelectedType] = useState<string>('Vorspeise');
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartCount, setCartCount] = useState<number>(0);
 
   const uniqueTypes = [...new Set(menuData.map(item => item.type))];
 
-  const scrollViewRef = useRef(null);
-  
+  const scrollViewRef = useRef<ScrollView>(null);
+
   const openShoppingCart = () => {
     navigation.navigate('ShoppingCart', { cartItems });
   };
 
-  const handleArrowClick = (direction) => {
+  const handleArrowClick = (direction: string) => {
     const currentIndex = uniqueTypes.indexOf(selectedType);
-    const itemWidth = 100;  // Dies sollte die ungefähre Breite deiner navItems sein. Passe dies entsprechend an.
+    const itemWidth = 100;
 
     if (direction === 'left' && currentIndex > 0) {
       setSelectedType(uniqueTypes[currentIndex - 1]);
-      scrollViewRef.current.scrollTo({ x: itemWidth * (currentIndex - 1), animated: true });
+      scrollViewRef.current?.scrollTo({ x: itemWidth * (currentIndex - 1), animated: true });
     } else if (direction === 'right' && currentIndex < uniqueTypes.length - 1) {
       setSelectedType(uniqueTypes[currentIndex + 1]);
-      scrollViewRef.current.scrollTo({ x: itemWidth * currentIndex, animated: true });
+      scrollViewRef.current?.scrollTo({ x: itemWidth * currentIndex, animated: true });
     }
   };
 
-  const addToCart = (item) => {
+  const addToCart = (item: CartItem) => {
     setCartItems([...cartItems, item]);
   };
 
@@ -39,8 +52,6 @@ const Home = ({ navigation }) => {
       <SafeAreaView style={styles.container}>
         <View style={styles.navbarWrapper}>
           <Arrows handleArrowClick={handleArrowClick} direction="left" />
-
-
           <ScrollView horizontal ref={scrollViewRef} style={styles.navbar}>
             {uniqueTypes.map((type) => (
               <TouchableOpacity key={type} style={[styles.navItem, selectedType === type && styles.navItemSelected]} onPress={() => setSelectedType(type)}>
@@ -48,11 +59,8 @@ const Home = ({ navigation }) => {
               </TouchableOpacity>
             ))}
           </ScrollView>
-
           <Arrows handleArrowClick={handleArrowClick} direction="right" />
-
         </View>
-
         <ScrollView style={styles.contentScrollView}>
           {menuData.filter(item => item.type === selectedType).map((item, index) => (
             <MenuCard
@@ -61,7 +69,7 @@ const Home = ({ navigation }) => {
               description={item.description}
               price={item.price}
               setCartCount={setCartCount}
-              addToCart={() => addToCart(item)}  // Funktion als Prop weitergegeben
+              addToCart={() => addToCart(item)}
             />
           ))}
         </ScrollView>
@@ -97,11 +105,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
     backgroundColor: '#ffffff',
   },
-  arrowText: {
-    fontSize: 18,
-    marginHorizontal: 10,
-    color: '#000',
-  },
   navbar: {
     flex: 1,
     flexDirection: 'row',
@@ -129,18 +132,6 @@ const styles = StyleSheet.create({
   contentScrollView: {
     marginTop: 60,
   },
-  cartIcon: {
-    position: 'absolute',
-    bottom: 50,
-    right: 30,
-    height: 50,
-    width: 50,
-    borderRadius: 30,
-    backgroundColor: '#C5E1A5',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-
   cartButton: {
     position: 'absolute',
     bottom: 20,
@@ -164,8 +155,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 5,
     right: 5,
-    backgroundColor: 'red',   // Roten Hintergrund für bessere Sichtbarkeit
-    borderRadius: 8,  // Kreisförmigen Hintergrund
+    backgroundColor: 'red',
+    borderRadius: 8,
     paddingHorizontal: 5,
     fontSize: 12,
     color: '#FFF',

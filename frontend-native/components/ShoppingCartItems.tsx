@@ -1,16 +1,25 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-const ShoppingCartItem = ({ item }) => {
+interface Item {
+  title: string;
+  price: number;
+}
+
+interface ShoppingCartItemProps {
+  item: Item;
+}
+
+const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({ item }) => {
   return (
     <View style={styles.container}>
       <Image 
-        source={{ uri: item.imageUrl }}
+        source={{  }}
         style={styles.image}
       />
       <View style={styles.info}>
         <Text style={styles.name}>{item.title}</Text>
-        <Text style={styles.price}>{item.price} €</Text>
+        <Text style={styles.price}>{item.price}€</Text>
       </View>
     </View>
   );

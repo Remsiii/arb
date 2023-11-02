@@ -1,7 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const MenuSwitcher = ({ categories, onChange }) => {
+interface MenuSwitcherProps {
+  categories: string[];
+  onChange: (category: string) => void;
+}
+
+const MenuSwitcher: React.FC<MenuSwitcherProps> = ({ categories, onChange }) => {
   return (
     <View style={styles.container}>
       {categories.map((category, index) => (
