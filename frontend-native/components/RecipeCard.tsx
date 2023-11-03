@@ -5,14 +5,13 @@ interface MenuCardProps {
   title: string;
   description: string;
   price: number;
-  setCartCount: (update: (prevCount: number) => number) => void;
-  addToCart: (item: { title: string; description: string; price: number }) => void;
+  addToCart: (item: { title: string; description: string; price: number,  quantity: number }) => void;
 }
 
-const MenuCard: React.FC<MenuCardProps> = ({ title, description, price, setCartCount, addToCart }) => {
+const MenuCard: React.FC<MenuCardProps> = ({ title, description, price, addToCart }) => {
+
     const handlePress = () => {
-        setCartCount(prevCount => prevCount + 1);
-        addToCart({ title, description, price });
+        addToCart({ title, description, price, quantity: 1 });
     };
 
     return (
@@ -27,7 +26,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ title, description, price, setCartC
                     <TouchableOpacity onPress={handlePress} style={styles.addButton}>
                         <Text style={styles.addButtonText}>+</Text>
                     </TouchableOpacity>
-                </View>
+                </View> 
             </View>
         </TouchableOpacity>
     );

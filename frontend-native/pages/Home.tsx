@@ -9,6 +9,7 @@ interface CartItem {
   description: string;
   price: number;
   type: string;
+  quantity?: number;
 }
 
 interface HomeProps {
@@ -44,8 +45,22 @@ const Home: FC<HomeProps> = ({ navigation }) => {
   };
 
   const addToCart = (item: CartItem) => {
-    setCartItems([...cartItems, item]);
-  };
+    let updatedCartItems = [...cartItems];
+    const existingItemIndex = updatedCartItems.findIndex(cartItem => cartItem.title === item.title);
+
+    if (existingItemIndex !== -1) {
+        updatedCartItems[existingItemIndex].quantity = (updatedCartItems[existingItemIndex].quantity || 1) + 1;
+    } else {
+        item.quantity = 1;
+        updatedCartItems = [...updatedCartItems, item];
+    }
+
+    // Anzahl der Artikel im Warenkorb aktualisieren
+    const newCartCount = updatedCartItems.reduce((acc, currentItem) => acc + (currentItem.quantity || 1), 0);
+    setCartItems(updatedCartItems);
+    setCartCount(newCartCount);
+};
+
 
   return (
     <View style={{ flex: 1 }}>
@@ -68,7 +83,6 @@ const Home: FC<HomeProps> = ({ navigation }) => {
               title={item.title}
               description={item.description}
               price={item.price}
-              setCartCount={setCartCount}
               addToCart={() => addToCart(item)}
             />
           ))}

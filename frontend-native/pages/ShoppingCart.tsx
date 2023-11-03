@@ -1,16 +1,17 @@
-import React, { FC } from 'react';
-import { View, Text, StyleSheet, Pressable, ActivityIndicator, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, Button } from 'react-native';
 import ShoppingCartItem from '../components/ShoppingCartItems';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
-// Definieren Sie den Typ für die Artikel im Warenkorb
+
 interface CartItem {
   title: string;
   description: string;
   price: number;
   type: string;
+  quantity: number;
 }
 
-// Definieren Sie den Typ für die Props der ShoppingCart-Komponente
 interface ShoppingCartProps {
   route: {
     params: {
@@ -19,20 +20,54 @@ interface ShoppingCartProps {
   };
 }
 
-const ShoppingCart: FC<ShoppingCartProps> = ({ route }) => {
-  const { cartItems } = route.params;
+const ShoppingCart: React.FC<ShoppingCartProps> = ({ route }) => {
+  const [items, setItems] = useState(route.params.cartItems);
+  type RootStackParamList = {
+    ShoppingCart: undefined;
+    PaymentScreen: undefined;
+  };
 
-  const onCheckout = async () => {
-    // 1. Create a payment intent
-    return;
+  const navigation = useNavigation<NavigationProp<RootStackParamList, 'PaymentScreen'>>();
+
+  const handleDelete = (index: number) => {
+    const newItems = [...items];
+    newItems.splice(index, 1);
+    setItems(newItems);
+  };
+
+  const calculateTotal = () => {
+    const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return parseFloat(total.toFixed(2));
+  };
+  
+
+  const handleQuantityChange = (index: number, quantity: number) => {
+    const newItems = [...items];
+    if (quantity <= 0) {
+      handleDelete(index);
+    } else {
+      newItems[index].quantity = quantity;
+      setItems(newItems);
+    }
   };
 
   return (
     <ScrollView style={styles.container}>
-      <View>
-        {cartItems.map((item, index) => (
-          <ShoppingCartItem key={index} item={item} />
-        ))}
+      {items.map((item, index) => (
+        <ShoppingCartItem
+          key={index}
+          item={item}
+          onDelete={() => handleDelete(index)}
+          onQuantityChange={(quantity) => handleQuantityChange(index, quantity)}
+        />
+      ))}
+
+      <Button title="Alles löschen" onPress={() => setItems([])} />
+      {/* Weitere Buttons für Coupons und Trinkgeld können hier hinzugefügt werden. */}
+
+      <View style={styles.footer}>
+        <Text style={styles.total}>Total: {calculateTotal()}€</Text>
+        <Button title="Bezahlen" onPress={() => navigation.navigate('PaymentScreen')} />
       </View>
     </ScrollView>
   );
@@ -41,6 +76,16 @@ const ShoppingCart: FC<ShoppingCartProps> = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    alignItems: 'center',
+  },
+  total: {
+    fontSize: 18,
+    fontWeight: 'bold'
   },
 });
 
