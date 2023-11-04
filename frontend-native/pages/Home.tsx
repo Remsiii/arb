@@ -1,16 +1,18 @@
-import React, { useState, useRef, FC } from 'react';
+import React, { useState, useRef, FC, useMemo } from 'react';
 import { ScrollView, SafeAreaView, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import MenuCard from '../components/RecipeCard';
 import menuData from '../app/menuData.json';
 import Arrows from '../components/Arrows';
+import { useShoppingCart } from '../contexts/ShoppingCartContext';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
-interface CartItem {
+type CartItem = {
   title: string;
   description: string;
   price: number;
   type: string;
-  quantity?: number;
-}
+  quantity: number;
+};
 
 interface HomeProps {
   navigation: {
@@ -18,17 +20,24 @@ interface HomeProps {
   };
 }
 
-const Home: FC<HomeProps> = ({ navigation }) => {
+const Home: FC<HomeProps> = () => {
   const [selectedType, setSelectedType] = useState<string>('Vorspeise');
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [cartCount, setCartCount] = useState<number>(0);
+  const { items, setItems } = useShoppingCart();
+
+  type RootStackParamList = {
+    ShoppingCart: undefined;
+    PaymentScreen: { totalAmount: number };
+    Home: undefined;
+  };
+
+  const navigation = useNavigation<NavigationProp<RootStackParamList, 'PaymentScreen'>>();
 
   const uniqueTypes = [...new Set(menuData.map(item => item.type))];
 
   const scrollViewRef = useRef<ScrollView>(null);
 
   const openShoppingCart = () => {
-    navigation.navigate('ShoppingCart', { cartItems });
+    navigation.navigate('ShoppingCart');
   };
 
   const handleArrowClick = (direction: string) => {
@@ -45,7 +54,7 @@ const Home: FC<HomeProps> = ({ navigation }) => {
   };
 
   const addToCart = (item: CartItem) => {
-    let updatedCartItems = [...cartItems];
+    let updatedCartItems = [...items];
     const existingItemIndex = updatedCartItems.findIndex(cartItem => cartItem.title === item.title);
 
     if (existingItemIndex !== -1) {
@@ -57,9 +66,12 @@ const Home: FC<HomeProps> = ({ navigation }) => {
 
     // Anzahl der Artikel im Warenkorb aktualisieren
     const newCartCount = updatedCartItems.reduce((acc, currentItem) => acc + (currentItem.quantity || 1), 0);
-    setCartItems(updatedCartItems);
-    setCartCount(newCartCount);
+    setItems(updatedCartItems);
 };
+
+const cartCount = useMemo(() => {
+  return items.reduce((acc, item) => acc + item.quantity, 0);
+}, [items]);
 
 
   return (
@@ -83,7 +95,7 @@ const Home: FC<HomeProps> = ({ navigation }) => {
               title={item.title}
               description={item.description}
               price={item.price}
-              addToCart={() => addToCart(item)}
+              addToCart={() => addToCart({ ...item, quantity: 1 })}
             />
           ))}
         </ScrollView>

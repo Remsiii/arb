@@ -1,0 +1,835 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> renders correctly 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <RCTSafeAreaView
+    style={
+      {
+        "backgroundColor": "#f4f4f4",
+        "flex": 1,
+        "padding": 10,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#ccc",
+          "borderBottomWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "left": 0,
+          "marginBottom": 25,
+          "paddingVertical": 5,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#000",
+              "fontSize": 18,
+              "marginHorizontal": 10,
+            }
+          }
+        >
+          &lt;
+        </Text>
+      </View>
+      <RCTScrollView
+        horizontal={true}
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "row",
+            "marginHorizontal": 10,
+          }
+        }
+      >
+        <View>
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "backgroundColor": "#e0e0e0",
+                "borderRadius": 10,
+                "marginHorizontal": 5,
+                "opacity": 1,
+                "paddingHorizontal": 15,
+                "paddingVertical": 15,
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#000",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              Vorspeise
+            </Text>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "backgroundColor": "#f5f5f5",
+                "borderRadius": 10,
+                "marginHorizontal": 5,
+                "opacity": 1,
+                "paddingHorizontal": 15,
+                "paddingVertical": 15,
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#333",
+                  "fontSize": 16,
+                }
+              }
+            >
+              Hauptgericht
+            </Text>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "backgroundColor": "#f5f5f5",
+                "borderRadius": 10,
+                "marginHorizontal": 5,
+                "opacity": 1,
+                "paddingHorizontal": 15,
+                "paddingVertical": 15,
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#333",
+                  "fontSize": 16,
+                }
+              }
+            >
+              Nachspeise
+            </Text>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "backgroundColor": "#f5f5f5",
+                "borderRadius": 10,
+                "marginHorizontal": 5,
+                "opacity": 1,
+                "paddingHorizontal": 15,
+                "paddingVertical": 15,
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#333",
+                  "fontSize": 16,
+                }
+              }
+            >
+              Getränke
+            </Text>
+          </View>
+        </View>
+      </RCTScrollView>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#000",
+              "fontSize": 18,
+              "marginHorizontal": 10,
+            }
+          }
+        >
+          &gt;
+        </Text>
+      </View>
+    </View>
+    <RCTScrollView
+      style={
+        {
+          "marginTop": 60,
+        }
+      }
+    >
+      <View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "margin": 10,
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "backgroundColor": "#FFF",
+                "borderRadius": 8,
+                "elevation": 3,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "padding": 15,
+                "shadowColor": "#000",
+                "shadowOffset": {
+                  "height": 1,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 2,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flex": 3,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "fontSize": 18,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                Mancacasi Mami
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#888",
+                    "fontSize": 14,
+                    "marginTop": 8,
+                  }
+                }
+              >
+                Calamari prăjiți într-un mix de făină aromatizată cu fenicul și oregano, acompaniați de un sos ușor picant de maioneză și harissa. Totul este pus în valoare de un mix proaspăt de salată, cu dressing delicios de lămâie și miere.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "marginRight": 10,
+                  }
+                }
+              >
+                10
+                €
+              </Text>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#C5E1A5",
+                    "borderRadius": 15,
+                    "height": 30,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": 30,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#4E7C5B",
+                      "fontSize": 25,
+                    }
+                  }
+                >
+                  +
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "margin": 10,
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "backgroundColor": "#FFF",
+                "borderRadius": 8,
+                "elevation": 3,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "padding": 15,
+                "shadowColor": "#000",
+                "shadowOffset": {
+                  "height": 1,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 2,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flex": 3,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "fontSize": 18,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                Lol Imagone
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#888",
+                    "fontSize": 14,
+                    "marginTop": 8,
+                  }
+                }
+              >
+                Calamari prăjiți într-un mix de făină aromatizată cu fenicul și oregano, acompaniați de un sos ușor picant de maioneză și harissa. Totul este pus în valoare de un mix proaspăt de salată, cu dressing delicios de lămâie și miere.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "marginRight": 10,
+                  }
+                }
+              >
+                23.67
+                €
+              </Text>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#C5E1A5",
+                    "borderRadius": 15,
+                    "height": 30,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": 30,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#4E7C5B",
+                      "fontSize": 25,
+                    }
+                  }
+                >
+                  +
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "margin": 10,
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "backgroundColor": "#FFF",
+                "borderRadius": 8,
+                "elevation": 3,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "padding": 15,
+                "shadowColor": "#000",
+                "shadowOffset": {
+                  "height": 1,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 2,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flex": 3,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "fontSize": 18,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                CALAMARI GANG
+              </Text>
+              <Text
+                style={
+                  {
+                    "color": "#888",
+                    "fontSize": 14,
+                    "marginTop": 8,
+                  }
+                }
+              >
+                Calamari prăjiți într-un mix de făină aromatizată cu fenicul și oregano, acompaniați de un sos ușor picant de maioneză și harissa. Totul este pus în valoare de un mix proaspăt de salată, cu dressing delicios de lămâie și miere.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "marginRight": 10,
+                  }
+                }
+              >
+                100
+                €
+              </Text>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#C5E1A5",
+                    "borderRadius": 15,
+                    "height": 30,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": 30,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "color": "#4E7C5B",
+                      "fontSize": 25,
+                    }
+                  }
+                >
+                  +
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </RCTSafeAreaView>
+</View>
+`;
