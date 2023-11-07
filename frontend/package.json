@@ -30,10 +30,12 @@
     "react-day-picker": "^8.9.1",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
+    "react-router-dom": "^6.18.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@capacitor/cli": "^5.5.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
