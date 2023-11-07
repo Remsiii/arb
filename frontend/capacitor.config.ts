@@ -5,7 +5,9 @@ const config: CapacitorConfig = {
   appName: 'arb_app',
   webDir: 'public',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    url: 'https://192.168.1.18:3000',
+    cleartext: true,
   }
 };
 

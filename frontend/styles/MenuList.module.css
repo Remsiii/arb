@@ -1,0 +1,33 @@
+/* MenuList.module.css */
+
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 0 auto; /* zentriert den Container, wenn die Seite breiter ist als der Inhalt */
+  max-width: 1200px; /* Maximale Breite des Containers, anpassbar */
+  box-sizing: border-box; /* Stellt sicher, dass das Padding die Gesamtbreite nicht beeinflusst */
+}
+
+.menuItem {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 600px) {
+  .menuContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .menuItem {
+    width: calc(50% - 40px); /* Anpassen für den Abstand */
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 900px) {
+  .menuItem {
+    width: calc(33.333% - 40px); /* Anpassen für den Abstand */
+  }
+}
