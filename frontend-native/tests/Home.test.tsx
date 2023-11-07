@@ -1,22 +1,25 @@
-
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { render, fireEvent } from '@testing-library/react-native';
 import Home from '../pages/Home';
 import { ShoppingCartProvider } from '../contexts/ShoppingCartContext';
 
-// Mocking the navigation hook
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigate: jest.fn(),
-    }),
-  };
-});
+// Mocking the navigation and context hooks
+jest.mock('@react-navigation/native', () => ({
+  useNavigation: () => ({
+    navigate: jest.fn(),
+  }),
+}));
+
+jest.mock('../contexts/ShoppingCartContext', () => ({
+  useShoppingCart: () => ({
+    items: [],
+    setItems: jest.fn(),
+  }),
+}));
 
 describe('<Home />', () => {
-  it('renders correctly', () => {
-    const tree = render(
+  it('renders all required components', () => {
+    const { getByTestId } = render(
       <ShoppingCartProvider>
         <Home navigation={{
           navigate: function (route: string, params: { cartItems: { title: string; description: string; price: number; type: string; quantity: number; }[]; }): void {
@@ -24,9 +27,13 @@ describe('<Home />', () => {
           }
         }} />
       </ShoppingCartProvider>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    
+    expect(getByTestId('menuCard')).toBeTruthy();
+    expect(getByTestId('arrowsComponent')).toBeTruthy();
   });
+
+  // Weitere Tests können hier hinzugefügt werden
 });
 
 export {};

@@ -1,7 +1,7 @@
 import React, { useState, useRef, FC, useMemo } from 'react';
 import { ScrollView, SafeAreaView, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import MenuCard from '../components/RecipeCard';
-import menuData from '../app/menuData.json';
+import menuData from '../data/menuData.json';
 import Arrows from '../components/Arrows';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
@@ -191,3 +191,36 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
+
+
+// import React from 'react';
+// import { SafeAreaView, View } from 'react-native';
+// import { useHomeLogic } from '../hooks/useHomeLogic';
+// import MenuCard from '../components/RecipeCard';
+// import Arrows from '../components/Arrows';
+// import ShoppingCartItems from '../components/ShoppingCartItems';
+// import { styles } from '../styles/homeStyles';
+
+// const Home = () => {
+//   const { selectedType, setSelectedType, cartCount, handleArrowClick, addToCart } = useHomeLogic();
+
+//   return (
+//     <View style={styles.flexOne}>
+//       <SafeAreaView style={styles.container}>
+//         <Arrows
+//           selectedType={selectedType}
+//           setSelectedType={setSelectedType}
+//           handleArrowClick={handleArrowClick}
+//         />
+//         <MenuCard
+//           selectedType={selectedType}
+//           addToCart={addToCart}
+//         />
+//         <ShoppingCartItems cartCount={cartCount} />
+//       </SafeAreaView>
+//     </View>
+//   );
+// };
+
+// export default Home;
+
