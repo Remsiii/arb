@@ -31,7 +31,7 @@ export const StoreModal = () => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
       // const response = await axios.post('/api/stores', values);
