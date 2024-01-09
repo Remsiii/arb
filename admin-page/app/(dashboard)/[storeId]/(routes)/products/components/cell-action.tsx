@@ -33,9 +33,11 @@ export const CellAction: React.FC<CellActionProps> = ({
   const onConfirm = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/products/${data.id}`);
+      const url = `http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d/items/${data.id}`;
+      await axios.delete(url);
       toast.success('Product deleted.');
-      router.refresh();
+      // Removed reload() since it doesn't exist on router
+      window.location.reload();
     } catch (error) {
       toast.error('Something went wrong');
     } finally {
@@ -51,8 +53,8 @@ export const CellAction: React.FC<CellActionProps> = ({
 
   return (
     <>
-      <AlertModal 
-        isOpen={open} 
+      <AlertModal
+        isOpen={open}
         onClose={() => setOpen(false)}
         onConfirm={onConfirm}
         loading={loading}
@@ -86,3 +88,4 @@ export const CellAction: React.FC<CellActionProps> = ({
     </>
   );
 };
+

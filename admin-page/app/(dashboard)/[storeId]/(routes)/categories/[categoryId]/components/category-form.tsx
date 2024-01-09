@@ -27,19 +27,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 const formSchema = z.object({
   name: z.string().min(2),
-  billboardId: z.string().min(1),
 });
 
 type CategoryFormValues = z.infer<typeof formSchema>
 
 interface CategoryFormProps {
   initialData: Category | null;
-  billboards: Billboard[];
 };
 
 export const CategoryForm: React.FC<CategoryFormProps> = ({
   initialData,
-  billboards
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -56,7 +53,6 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       name: '',
-      billboardId: '',
     }
   });
 
@@ -64,15 +60,14 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
     try {
       setLoading(true);
       const url = `http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d/dishes`;
-      const payload = { name: data.name };
-  
-      if (initialData) {
-        // Wenn Sie ein bestehendes Gericht bearbeiten, können Sie hier eine PUT- oder PATCH-Anfrage verwenden.
-        await axios.put(url, payload);
-      } else {
+      const payload = {
+        name: data.name,
+        items: [] // Leere ItemList hinzugefügt
+      };
+
         // Für das Erstellen eines neuen Gerichts
         await axios.post(url, payload);
-      }
+      
   
       router.refresh();
       router.push(`/${params.storeId}/categories`);

@@ -138,6 +138,7 @@ const colors = [
             ...product,
             images: [] 
           }}
+          itemId='id'
         />
       </div>
     </div>

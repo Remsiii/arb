@@ -49,13 +49,13 @@ interface ProductFormProps {
   categories: Category[];
   colors: Color[];
   sizes: Size[];
+  itemId: string;
 };
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
-  categories,
   sizes,
-  colors
+  itemId
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -115,7 +115,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
+      const url = `http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d/items/${itemId}`;
+      await axios.delete(url);
+
       router.refresh();
       router.push(`/${params.storeId}/products`);
       toast.success('Product deleted.');
@@ -125,7 +127,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       setLoading(false);
       setOpen(false);
     }
-  }
+  };
 
   const category = [
     { id: '1', name: 'Vorspeise' },
