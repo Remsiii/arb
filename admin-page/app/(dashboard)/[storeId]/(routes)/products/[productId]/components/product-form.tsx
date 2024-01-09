@@ -30,6 +30,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 const formSchema = z.object({
   name: z.string().min(1),
+  description: z.string().min(1),
   images: z.object({ url: z.string() }).array(),
   price: z.coerce.number().min(1),
   categoryId: z.string().min(1),
@@ -89,11 +90,18 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const onSubmit = async (data: ProductFormValues) => {
     try {
       setLoading(true);
-      if (initialData) {
-        await axios.patch(`/api/${params.storeId}/products/${params.productId}`, data);
-      } else {
-        await axios.post(`/api/${params.storeId}/products`, data);
-      }
+
+      // Strukturiere die Daten für den API-Request
+      const apiRequestBody = {
+                name: data.name,
+                description: data.description, 
+                image: "asd", 
+                price: data.price
+      };
+    
+
+      await axios.post('http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d/dishes/Vorspeise/items', apiRequestBody);
+  
       router.refresh();
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
@@ -184,6 +192,19 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             />
             <FormField
               control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Beschreibung</FormLabel>
+                  <FormControl>
+                    <Input disabled={loading} placeholder="Beschreibung des Gerichts" {...field}/>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="price"
               render={({ field }) => (
                 <FormItem>
@@ -242,7 +263,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 </FormItem>
               )}
             />
-            <FormField
+            {/* <FormField
               control={form.control}
               name="colorId"
               render={({ field }) => (
@@ -263,30 +284,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   <FormMessage />
                 </FormItem>
               )}
-            />
-            <FormField
-              control={form.control}
-              name="isFeatured"
-              render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      // @ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <div className="space-y-1 leading-none">
-                    <FormLabel>
-                      Featured
-                    </FormLabel>
-                    <FormDescription>
-                      This product will appear on the home page
-                    </FormDescription>
-                  </div>
-                </FormItem>
-              )}
-            />
+            /> */}
             <FormField
               control={form.control}
               name="isArchived"

@@ -1,47 +1,56 @@
+
+"use client"
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { format } from "date-fns";
 import { formatter } from "@/lib/utils";
 
 import { ProductsClient } from "./components/client";
 import { ProductColumn } from "./components/columns";
 
-const ProductsPage = async ({
+const ProductsPage =  ({
   params
 }: {
   params: { storeId: string }
 }) => {
-  const dummyProducts = [
-    {
-      id: "prod1",
-      storeId: params.storeId,
-      name: "Produkt 1",
-      isFeatured: true,
-      isArchived: false,
-      price: 199.99,
-      category: { name: "Kategorie 1" },
-      size: { name: "Mittel" },
-      color: { value: "#ff0000" },
-      createdAt: new Date("2021-01-01"),
-      // ... weitere Produkteigenschaften
-    },
-    // ... Weitere Dummy-Produkte
-  ];
 
-  const formattedProducts: ProductColumn[] = dummyProducts.map((item) => ({
-    id: item.id,
-    name: item.name,
-    isFeatured: item.isFeatured,
-    isArchived: item.isArchived,
-    price: formatter.format(item.price),
-    category: item.category.name,
-    size: item.size.name,
-    color: item.color.value,
-    createdAt: format(item.createdAt, 'MMMM do, yyyy'),
-  }));
+  const [products, setProducts] = useState<ProductColumn[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d`);
+        const fetchedProducts = response.data.dishes.flatMap((dish: { name: string; items: any[]; }) => dish.items.map(item => ({
+          id: item.id,
+          name: item.name,
+          isFeatured: false, // Setze isFeatured, falls es in deiner API vorhanden ist
+          isArchived: false, // Setze isArchived, falls es in deiner API vorhanden ist
+          price: item.price,
+          category: dish.name, // Setze die Kategorie, falls verfügbar
+        })));
+
+        const formattedProducts = fetchedProducts.map((item: { price: number | bigint; createdAt: any; }) => ({
+          ...item,
+          price: formatter.format(item.price),
+        }));
+
+        setProducts(formattedProducts);
+      } catch (error) {
+        console.error('Fehler beim Laden der Produkte:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [params.storeId]);
+
 
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <ProductsClient data={formattedProducts} />
+        <ProductsClient data={products} />
       </div>
     </div>
   );

@@ -1,23 +1,15 @@
-import prismadb from "@/lib/prismadb";
-
+import React from 'react';
 import { CategoryForm } from "./components/category-form";
+import { Billboard } from '@/types/schema';
 
-const CategoryPage = async ({
+const CategoryPage = ({
   params
 }: {
   params: { categoryId: string, storeId: string }
 }) => {
-  const category = await prismadb.category.findUnique({
-    where: {
-      id: params.categoryId
-    }
-  });
-
-  const billboards = await prismadb.billboard.findMany({
-    where: {
-      storeId: params.storeId
-    }
-  });
+  // Dummy-Daten oder Abrufen der Daten von einem anderen Ort
+  const billboards: Billboard[] = []; // Ersetzen Sie dies durch tatsächliche Daten
+  const category = null; // Ersetzen Sie dies durch tatsächliche Daten
 
   return ( 
     <div className="flex-col">

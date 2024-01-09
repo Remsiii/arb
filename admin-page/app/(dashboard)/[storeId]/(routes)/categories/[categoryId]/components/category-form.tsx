@@ -63,11 +63,17 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const onSubmit = async (data: CategoryFormValues) => {
     try {
       setLoading(true);
+      const url = `http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d/dishes`;
+      const payload = { name: data.name };
+  
       if (initialData) {
-        await axios.patch(`/api/${params.storeId}/categories/${params.categoryId}`, data);
+        // Wenn Sie ein bestehendes Gericht bearbeiten, können Sie hier eine PUT- oder PATCH-Anfrage verwenden.
+        await axios.put(url, payload);
       } else {
-        await axios.post(`/api/${params.storeId}/categories`, data);
+        // Für das Erstellen eines neuen Gerichts
+        await axios.post(url, payload);
       }
+  
       router.refresh();
       router.push(`/${params.storeId}/categories`);
       toast.success(toastMessage);
@@ -77,7 +83,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       setLoading(false);
     }
   };
-
+  
   const onDelete = async () => {
     try {
       setLoading(true);
@@ -131,7 +137,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                 </FormItem>
               )}
             />
-            <FormField
+            {/* <FormField
               control={form.control}
               name="billboardId"
               render={({ field }) => (
@@ -152,7 +158,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
             {action}

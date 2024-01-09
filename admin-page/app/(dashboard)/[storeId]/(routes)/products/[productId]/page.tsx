@@ -136,7 +136,7 @@ const colors = [
           sizes={sizes}
           initialData={{
             ...product,
-            images: [] // Add an empty array or provide the correct image data
+            images: [] 
           }}
         />
       </div>

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 
 import prismadb from "@/lib/prismadb";
-
+// http://localhost:5235/api/catalog
 export async function GET(
   req: Request,
   { params }: { params: { productId: string } }
