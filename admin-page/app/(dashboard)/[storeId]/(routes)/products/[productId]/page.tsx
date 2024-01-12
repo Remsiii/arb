@@ -1,5 +1,7 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import { ProductForm } from "./components/product-form";
+import axios from "axios"
 
 const ProductPage = ({
   params
@@ -123,15 +125,32 @@ const colors = [
   },
   // ... Weitere Farben nach Bedarf
 ];
-
+const [category, setCategories] = useState([]);
 // ... Rest des Codes
 
+const reloadCategories = async () => {
+  try {
+    const response = await axios.get(`http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d`);
+    const fetchedCategories = response.data.dishes;
+    const formattedCategories = fetchedCategories.map((dish: { name: any; }, index: number) => ({
+      id: (index + 1).toString(),
+      name: dish.name
+    }));
+    setCategories(formattedCategories);
+  } catch (error) {
+    console.error('Fehler beim Laden der Kategorien:', error);
+  }
+};
 
+
+useEffect(() => {
+  reloadCategories();
+}, [params.storeId]); 
   return ( 
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
         <ProductForm 
-          categories={categories} 
+          categories={category} 
           colors={colors}
           sizes={sizes}
           initialData={{

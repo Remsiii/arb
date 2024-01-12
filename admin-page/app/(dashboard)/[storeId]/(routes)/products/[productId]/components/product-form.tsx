@@ -52,10 +52,13 @@ interface ProductFormProps {
   itemId: string;
 };
 
+
+
 export const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
   sizes,
-  itemId
+  itemId,
+  categories
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -75,6 +78,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     name: '',
     images: [],
     price: 0,
+    description: '',
     categoryId: '',
     colorId: '',
     sizeId: '',
@@ -91,7 +95,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     try {
       setLoading(true);
 
-      // Strukturiere die Daten für den API-Request
+      const categoryName = categories.find(category => category.id === data.categoryId)?.name;
+      if (!categoryName) {
+        throw new Error("Kategorie nicht gefunden");
+      }
+
       const apiRequestBody = {
                 name: data.name,
                 description: data.description, 
@@ -100,8 +108,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       };
     
 
-      await axios.post('http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d/dishes/Vorspeise/items', apiRequestBody);
-  
+      const url = `http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d/dishes/${encodeURIComponent(categoryName)}/items`;
+      await axios.post(url, apiRequestBody);
       router.refresh();
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
@@ -128,13 +136,6 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       setOpen(false);
     }
   };
-
-  const category = [
-    { id: '1', name: 'Vorspeise' },
-    { id: '2', name: 'Hauptspeise' },
-    { id: '3', name: 'Nachspeise' },
-    { id: '4', name: 'Getränk' }
-  ];
 
   return (
     <>
@@ -231,19 +232,18 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {/* {categories.map((category) => (
-                        <SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
-                      ))} */}
-{category.map((category) => (
-        <SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
-      ))}
+                    {categories.map((category) => (
+            <SelectItem key={category.id} value={category.id}>
+              {category.name}
+            </SelectItem>
+          ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <FormField
+            {/* <FormField
               control={form.control}
               name="sizeId"
               render={({ field }) => (
@@ -264,7 +264,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
             {/* <FormField
               control={form.control}
               name="colorId"

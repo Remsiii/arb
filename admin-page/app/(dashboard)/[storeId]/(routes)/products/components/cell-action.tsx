@@ -5,6 +5,8 @@ import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useCatalog } from '@/context/CatalogContext';
+
 
 import { AlertModal } from "@/components/modals/alert-modal";
 import { Button } from "@/components/ui/button";
@@ -29,15 +31,18 @@ export const CellAction: React.FC<CellActionProps> = ({
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const params = useParams();
+  const { removeItem } = useCatalog(); // Kontext verwenden
 
   const onConfirm = async () => {
     try {
       setLoading(true);
       const url = `http://localhost:5235/api/catalog/beace156-eceb-4b4a-9aa3-79f872eaa27d/items/${data.id}`;
       await axios.delete(url);
+      removeItem(data.id);
+      
       toast.success('Product deleted.');
-      // Removed reload() since it doesn't exist on router
-      window.location.reload();
+      router.refresh();
+      router.push(`/${params.storeId}/products`);
     } catch (error) {
       toast.error('Something went wrong');
     } finally {
